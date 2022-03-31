@@ -14,8 +14,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} > /etc/timezone
 RUN printf '[PHP]\ndate.timezone = "%s"\n', ${TIMEZONE} > /usr/local/etc/php/conf.d/tzone.ini
 
-RUN pecl install xdebug && docker-php-ext-enable xdebug
-
 RUN curl -sS https://get.symfony.com/cli/installer | bash
 
 RUN echo 'alias composer="XDEBUG_MODE=off composer"' >> ~/.bashrc
