@@ -1,0 +1,62 @@
+name: Tests
+
+on: 
+  push:
+    branches: [master]
+
+jobs:
+  php-unit-and-functional-tests:
+    runs-on: ubuntu-20.04
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_DATABASE: app_test
+          MYSQL_HOST: 127.0.0.1
+          MYSQL_USER: root
+          MYSQL_PASSWORD: password
+          MYSQL_ROOT_PASSWORD: password
+          SERVICE_NAME: mysql
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    strategy:
+      fail-fast: true
+      matrix:
+        php-versions: ['8.1']
+    steps:
+
+      - name: Git checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          coverage: none
+          tools: composer:v2
+          extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, dom, filter, gd, iconv, json, mbstring, pdo
+        env:
+          update: true
+
+      - name: Check PHP Version
+        run: php -v
+
+      - name: Install Composer dependencies
+        run: |
+          cp .env.test .env
+          composer install
+
+      - name: Check the Symfony console
+        run: bin/console -V
+
+      - name: Fixtures
+        run: |
+          bin/console doctrine:schema:update --force
+          bin/console doctrine:fixtures:load --no-interaction
+
+      - name: Run functionnal and unit tests
+        run: |
+          bin/phpunit tests/Service/Api
+          bin/phpunit tests/Service/Jwt
