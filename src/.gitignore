@@ -1,0 +1,100 @@
+
+###> symfony/framework-bundle ###
+/.env
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+.idea
+
+###> symfony/phpunit-bridge ###
+.phpunit.result.cache
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+/public/build/
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+### macOS Patch ###
+# iCloud generated files
+*.icloud
+
+/public/uploads/camping/*
+!/public/uploads/camping/.gitkeep
+!/public/uploads/camping/1.jpg
+!/public/uploads/camping/2.jpg
+!/public/uploads/camping/3.jpg
+!/public/uploads/camping/4.jpg
+!/public/uploads/camping/5.jpg
+!/public/uploads/camping/6.jpg
+!/public/uploads/camping/7.jpg
+
+/public/uploads/files/*
+!/public/uploads/files/.gitkeep
+!/public/uploads/files/program.docx
+!/public/uploads/files/map.jpg
+
+/public/uploads/slide/*
+!/public/uploads/slide/.gitkeep
+
+/public/uploads/icons/*
+!/public/uploads/icons/.gitkeep
+
+/public/uploads/product/*
+!/public/uploads/product/.gitkeep
+
+/public/uploads/banner/*
+!/public/uploads/banner/.gitkeep
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###
+
+/assets/scripts
+
+/assets/fonts/radomir_tinkov_-_gilroy-extrabold-webfont.woff
+/assets/fonts/radomir_tinkov_-_gilroy-extrabold-webfont.woff2
+/assets/fonts/radomir_tinkov_-_gilroy-light-webfont.woff
+/assets/fonts/radomir_tinkov_-_gilroy-light-webfont.woff2
