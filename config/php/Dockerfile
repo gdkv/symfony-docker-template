@@ -14,6 +14,16 @@ RUN pecl install xdebug-3.3.2
 RUN docker-php-ext-enable xdebug
 RUN apk del -f .build-deps
 
+RUN { \
+		echo 'zend_extension=xdebug'; \
+		echo 'xdebug.idekey=docker'; \
+		echo 'xdebug.mode=develop,coverage,debug,profile'; \
+		echo 'xdebug.start_with_request=yes'; \
+		echo 'xdebug.client_port=9003'; \
+		echo 'xdebug.log=/dev/stdout'; \
+		echo 'xdebug.log_level=0'; \
+	} > /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
 # set recommended PHP.ini settings
 # see https://secure.php.net/manual/en/opcache.installation.php
 RUN { \
